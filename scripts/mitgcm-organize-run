@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Assuming you have added scripts to you PATH already
+mv-mitgcm-grid
+mv-mitgcm-chkpt_state
+mv-mitgcm-pickup

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Check if a custom directory is provided
+if [ -z "$1" ]; then
+    echo "Move grid parameters to ./pickup/"
+    dirname="pickup"
+else
+    echo "Move grid parameters to user's directory: $1"
+    dirname=$1
+fi
+
+# Make grid directory
+mkdir -p "$dirname"
+
+# Move grid parameters
+mv -v pickup.*.[dm][ae]ta \
+"$dirname"
