@@ -1,0 +1,13 @@
+#!/bin/bash
+
+###
+# An example mitgcm run dir janitor script #
+###
+
+# How-to: Travel to your run dir, and run: 
+#   mitgcm-organize-run
+
+# Assuming you have added mv-mitgcm-* scripts to you PATH
+mv-mitgcm-grid
+mv-mitgcm-chkpt_state
+mv-mitgcm-pickup

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Check if a custom directory is provided
+if [ -z "$1" ]; then
+    echo "Move grid parameters to ./grid/"
+    dirname="grid"
+else
+    echo "Move grid parameters to user's directory: $1"
+    dirname=$1
+fi
+
+# Make grid directory
+mkdir -p "$dirname"
+
+# Move grid parameters
+mv -v [XY][CG].[dm][ae]ta \
+D[RXY][CF].[dm][ae]ta \
+D[XY][GUV].[dm][ae]ta \
+Depth.[dm][ae]ta \
+PHref[CF].[dm][ae]ta \
+RA[CSWZ].[dm][ae]ta \
+R[CF].[dm][ae]ta \
+RhoRef.[dm][ae]ta \
+hFac[CSW].[dm][ae]ta \
+Angle[CS][SN].[dm][ae]ta \
+maskCtrl[CSW]*.[dm][ae]ta \
+maskIn[CSW].[dm][ae]ta \
+[UV]2zonDir.[dm][ae]ta \
+"$dirname"
