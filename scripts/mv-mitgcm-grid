@@ -26,4 +26,6 @@ Angle[CS][SN].[dm][ae]ta \
 maskCtrl[CSW]*.[dm][ae]ta \
 maskIn[CSW].[dm][ae]ta \
 [UV]2zonDir.[dm][ae]ta \
+rLow[CSW].[dm][ae]ta \
+rSurf[CSW].[dm][ae]ta \
 "$dirname"
