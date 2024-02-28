@@ -66,6 +66,61 @@ class MITprof:
             prof_interp_weights=None, fld_strs=None, fld_exts=None,
         ):
     
+        """
+        Initialize the MITprof class.
+
+        Parameters
+        ----------
+        prof_depth : numpy.array
+            Depth values for each profile
+        prof_descr : numpy.array
+            Description for each profile
+        prof_YYYYMMDD : numpy.array
+            Date of the profile in YYYYMMDD format
+        prof_HHMMSS : numpy.array
+            Time of the profile in HHMMSS format
+        prof_lon : numpy.array
+            Longitude (ungridded) of the profile locations
+        prof_lat : numpy.array
+            Latitude (ungridded) of the profile locations
+        prof_point : numpy.array
+            Indices of the nearest grid points for each profile
+        prof_T : numpy.array
+            Temperature values for each profile
+        prof_Tweight : numpy.array
+            Weight values for temperature measurements
+        prof_Terr : numpy.array
+            Error values for temperature measurements
+        prof_S : numpy.array
+            Salinity values for each profile
+        prof_Sweight : numpy.array
+            Weight values for salinity measurements
+        prof_Serr : numpy.array
+            Error values for salinity measurements
+        prof_interp_XC11 : numpy.array
+            Gridded longitude lower-left corner index
+        prof_interp_YC11 : numpy.array
+            Gridded latitude lower-left corner index
+        prof_interp_XCNINJ : numpy.array
+            Gridded longitude upper-right corner index
+        prof_interp_YCNINJ : numpy.array
+            Gridded latitude upper-right corner index
+        prof_interp_i : numpy.array
+            Parallel partition index
+        prof_interp_j : numpy.array
+            Parallel partition index
+        prof_interp_lon : numpy.array
+            Gridded longitude values
+        prof_interp_lat : numpy.array
+            Gridded latitude values
+        prof_interp_weights : numpy.array
+            Interpolation weights
+        fld_strs : numpy.array
+            List of observed field names
+        fld_exts : numpy.array
+            List of observed field extensions
+        """
+
         self.prof_depth=prof_depth
         self.prof_descr=prof_descr
         self.prof_YYYYMMDD=prof_YYYYMMDD
@@ -92,6 +147,12 @@ class MITprof:
         self.fld_exts = fld_exts
 
     def assemble_dataset(self):
+        """
+        Assemble a dataset using the class attributes.
+
+        Returns:
+        - mitprof: xarray Dataset containing the profile data
+        """
         mitprof = xr.Dataset(
                 data_vars=dict(
                     prof_depth=(['iDEPTH'],self.prof_depth),
@@ -266,9 +327,6 @@ def get_tile_dict(xc, yc, prof_point, sNx=30, sNy=30):
     YCNINJ = np.zeros_like(xc)
     iTile = np.zeros_like(xc)
     jTile = np.zeros_like(xc)
-    i = np.zeros_like(xc)
-    j = np.zeros_like(xc)
-
 
     tile_count = 0
     for ii in range(int(xc.shape[1]/sNx)):
