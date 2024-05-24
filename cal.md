@@ -29,3 +29,17 @@ We're interested in outputting the model state and diagnostics monthly or yearly
 In `data`, parameters like `pChkptFreq`, `chkptFreq`, `dumpFreq`, and `monitorFreq` use intervals defined in seconds. The timestep, often defined in `data` by `deltaT`, determines the number of time steps wanted in the simulation `nTimeSteps` based on the interval the model needs to run.
 
 If using the `DIAGNOSTICS` package, you define intervals of model output by seconds in namelist `data.diagnostics`'s `frequency(n)` parameter.
+
+--------------------------
+
+Remember to turn on the Calendar package at runtime. In `data.pkg` add the following line: 
+
+```
+ useCal=.true.,
+```
+
+Otherwise, you will likely see an error like: 
+```
+CAL_GETDATE: called too early (cal_setStatus=-1 )
+ABNORMAL END: S/R CAL_GETDATE
+```
